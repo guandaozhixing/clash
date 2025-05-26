@@ -26,7 +26,14 @@ proxies:
   - {name: 39698-trojan-tcp-tls, server: remote.guannnnnn.work, port: 39698, client-fingerprint: chrome, type: trojan, password: q0qqaYMJrl, skip-cert-verify: true, udp: true}
   - {name: vm-argo临时-8880 2, server: www.visa.com.sg, port: 8880, client-fingerprint: chrome, type: vmess, uuid: b6174e86-0b20-4e3e-d25e-ecdb60653164, alterId: 0, cipher: auto, tls: false, tfo: false, skip-cert-verify: true, network: ws, ws-opts: {path: /guantianzhitian, headers: {Host: costs-bt-incidents-cal.trycloudflare.com}}, udp: true}
   - {name: vm-tls-argo临时-8443 2, server: www.visa.com.sg, port: 8443, client-fingerprint: chrome, type: vmess, uuid: b6174e86-0b20-4e3e-d25e-ecdb60653164, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: costs-bt-incidents-cal.trycloudflare.com, network: ws, ws-opts: {path: /guantianzhitian, headers: {Host: costs-bt-incidents-cal.trycloudflare.com}}, udp: true}
+  - { name: '美国01 (流媒体高速）', type: ss, server: x.fafhjkah.xyz, port: 32623, cipher: chacha20-ietf-poly1305, password: 1706ebfe-4676-4c27-9dbe-c31954cc6d79, udp: true }
+  - { name: '美国02 (流媒体高速）', type: ss, server: x.fafhjkah.xyz, port: 32623, cipher: chacha20-ietf-poly1305, password: 1706ebfe-4676-4c27-9dbe-c31954cc6d79, udp: true }   
+  - { name: '美国03 （GPT专用）', type: ss, server: x.fafhjkah.xyz, port: 32623, cipher: chacha20-ietf-poly1305, password: 1706ebfe-4676-4c27-9dbe-c31954cc6d79, udp: true }
+  - { name: '美国04 （GPT专用）', type: ss, server: x.fafhjkah.xyz, port: 32623, cipher: chacha20-ietf-poly1305, password: 1706ebfe-4676-4c27-9dbe-c31954cc6d79, udp: true }
+  - { name: '美国05 (IPLC稳定）', type: ss, server: x02.fafhjkah.xyz, port: 32623, cipher: chacha20-ietf-poly1305, password: 1706ebfe-4676-4c27-9dbe-c31954cc6d79, udp: true }
+  - { name: '美国06 (IPLC稳定）', type: ss, server: x02.fafhjkah.xyz, port: 32623, cipher: chacha20-ietf-poly1305, password: 1706ebfe-4676-4c27-9dbe-c31954cc6d79, udp: true }
 proxy-groups:
+  - { name: bingyun, type: select, proxies: ['美国01 (流媒体高速）', '美国02 (流媒体高速）', '美国03 （GPT专用）', '美国04 （GPT专用）', '美国05 (IPLC稳定）', '美国06 (IPLC稳定）'] }
   - name: 学术
     type: select
     proxies:
@@ -73,8 +80,9 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-      - 所有-手动
       - 所有-自动
+      - bingyun
+      - 冰云
       - REJECT
   - name: Test
     type: select
@@ -176,6 +184,20 @@ proxy-groups:
       - 39698-trojan-tcp-tls
       - vm-argo临时-8880 2
       - vm-tls-argo临时-8443 2
+  - name: 冰云
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    tolerance: 100
+    proxies:
+      - '美国01 (流媒体高速）'
+      - '美国02 (流媒体高速）'
+      - '美国03 （GPT专用）'
+      - '美国04 （GPT专用）'
+      - '美国05 (IPLC稳定）'
+      - '美国06 (IPLC稳定）'
+
+      
 rules:
   - DOMAIN,acs.org,学术
   - DOMAIN,acm.org,学术
