@@ -61,6 +61,8 @@ proxy-groups:
   - name: twitter
     type: select
     proxies:
+      - 火烧云
+      - 冰云
       - 所有-自动
       - DIRECT
       - 所有-手动
@@ -89,6 +91,8 @@ proxy-groups:
   - name: Google
     type: select
     proxies:
+      - 冰云
+      - 火烧云
       - 所有-自动
       - DIRECT
       - 所有-手动
