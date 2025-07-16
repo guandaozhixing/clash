@@ -121,14 +121,24 @@ proxy-groups:
     interval: 180
     tolerance: 100
     proxies:
-      - 美国节点-冰云
+      - 美国01 (流媒体高速）
+      - 美国02 (流媒体高速）
+      - 美国03 （GPT专用）
+      - 美国04 （GPT专用）
+      - 美国05 (IPLC稳定）
+      - 美国06 (IPLC稳定）
   - name: 火烧云
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 180
     tolerance: 100
     proxies:
-      - 美国节点-火烧云
+      - 美国1
+      - 美国2
+      - 美国3
+      - 美国4
+      - 美国5
+      - 美国6
   - name: 国内
     type: select
     proxies:
