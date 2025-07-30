@@ -122,7 +122,6 @@ default: &default
     - 搬瓦工-故转
     - VU-故转
     - 🇺🇲 美国落地
-    - CF-故转
     - 美国-故转
     - 所有-手动
     - 所有-自动
@@ -162,7 +161,7 @@ proxy-groups:
     include-all: true
     filter: "(?=.*(ZJ|自建)).*$"
 
-  # cloudflare组
+  # Vultr组
   - name: VU-故转
     type: fallback
     interval: 300
@@ -181,24 +180,6 @@ proxy-groups:
     interval: 300
     filter: "(?=.*(Vult)).*$"
 
-  # cloudflare组
-  - name: CF-故转
-    type: fallback
-    interval: 300
-    lazy: false
-    proxies:
-      - CF-手动
-      - CF-自动
-  - name: CF-手动
-    type: select
-    include-all: true
-    filter: "(?=.*(CF)).*$"
-  - name: CF-自动
-    type: url-test
-    include-all: true
-    tolerance: 50
-    interval: 300
-    filter: "(?=.*(CF)).*$"
 
   # 搬瓦工组
   - name: 搬瓦工-故转
